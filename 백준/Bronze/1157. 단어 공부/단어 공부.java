@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static int[] getAlphabetCount(String input) {
+        int[] count = new int[26];
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            if ('A' <= c && c <= 'Z') {
+                count[c - 'A']++;
+            } else {
+                count[c - 'a']++;
+            }
+        }
+        return count;
+    }
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        String input = sc.next();
+
+        int[] count = getAlphabetCount(input);
+
+        int maxCount = -1;
+        char maxAlphabet = '?';
+
+        for (int i = 0; i < 26; i++) {
+            if (count[i] > maxCount) {
+                maxCount = count[i];
+                maxAlphabet = (char)('A' + i);
+            }
+            else if (count[i] == maxCount) {
+                maxAlphabet = '?';
+            }
+        }
+        System.out.println((maxAlphabet));
+    }
+}
