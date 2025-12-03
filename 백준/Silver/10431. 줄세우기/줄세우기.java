@@ -13,12 +13,13 @@ public class Main {
 
             int cnt = 0;
             int[] sorted = new int[20];
+
             for (int i = 0; i < 20; i++) {
                 boolean find = false;
                 for (int j = 0; j < i; j++)
                     if (sorted[j] > h[i]) {
                         find = true;
-                        for (int k = i-1; k >= j; k--) {
+                        for (int k = i - 1; k >= j; k--) {
                             sorted[k + 1] = sorted[k];
                             cnt++;
                         }
@@ -29,7 +30,5 @@ public class Main {
             }
             System.out.println(T + " " + cnt);
         }
-
-        sc.close();
     }
 }
