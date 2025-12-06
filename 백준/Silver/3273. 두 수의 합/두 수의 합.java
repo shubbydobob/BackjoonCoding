@@ -5,29 +5,24 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
-
-        int[] a = new int[N];
-
-        for (int i = 0; i < N; i++)
-            a[i] = sc.nextInt();
-
-        int X = sc.nextInt();
-
-        boolean[] exist = new boolean[10000001];
-
-        for (int i = 0; i < N; i++)
-            exist[a[i]] = true;
-
-        int ans = 0;
+        boolean[] exist = new boolean[1000001];
 
         for (int i = 0; i < N; i++) {
-            int pairValue = X - a[i];
-            if (0 <= pairValue && pairValue <= 1000000)
-                ans += exist[pairValue] ? 1 : 0;
+            int checked = sc.nextInt();
+            exist[checked] = true;
         }
 
-        System.out.println(ans / 2);
+        int X = sc.nextInt();
+        int ans = 0;
 
+        for (int i = 1; i < X; i++) {
+            int target = X - i;
+            if (target > 1000000) continue;
 
+            if (i < target && exist[i] && exist[target]) {
+                ans++;
+            }
+        }
+        System.out.println(ans);
     }
 }
